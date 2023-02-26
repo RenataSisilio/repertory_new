@@ -15,7 +15,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'My Repertory',
       theme: lightTheme,
-      darkTheme: lightTheme.copyWith(colorScheme: darkColorScheme),
+      darkTheme: darkTheme,
       home: const SplashPage(),
       // themeMode: ThemeMode.light,
     );

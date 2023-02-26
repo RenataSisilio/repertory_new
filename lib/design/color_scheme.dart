@@ -6,6 +6,12 @@ final lightTheme = ThemeData(
   appBarTheme: const AppBarTheme(centerTitle: true),
 );
 
+final darkTheme = ThemeData(
+  useMaterial3: true,
+  colorScheme: darkColorScheme,
+  appBarTheme: const AppBarTheme(centerTitle: true),
+);
+
 const lightColorScheme = ColorScheme(
   brightness: Brightness.light,
   primary: Color(0xFF0062A0),
