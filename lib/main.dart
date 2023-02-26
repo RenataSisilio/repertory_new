@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import 'design/color_scheme.dart';
 import 'modules/splash/splash_page.dart';
 
 void main() {
@@ -13,10 +14,10 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'My Repertory',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
+      theme: lightTheme,
+      darkTheme: lightTheme.copyWith(colorScheme: darkColorScheme),
       home: const SplashPage(),
+      // themeMode: ThemeMode.light,
     );
   }
 }
