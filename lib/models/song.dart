@@ -50,10 +50,10 @@ class Song {
     return Song(
       id: map['id'] != null ? map['id'] as String : null,
       title: map['title'] as String,
-      categories: List<String>.from(map['categories'] as List<String>),
+      categories: (map['categories'] as List).map((e) => e.toString()).toList(),
       lyricsURL: map['lyricsURL'] != null ? map['lyricsURL'] as String : null,
       chordsURL: map['chordsURL'] != null ? map['chordsURL'] as String : null,
-      favorite: map['favorite'] as bool,
+      favorite: map['favorite'] as bool? ?? false,
     );
   }
 

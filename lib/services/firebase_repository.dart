@@ -9,6 +9,10 @@ import 'repository.dart';
 class FirebaseRepository implements Repository {
   late final FirebaseFirestore? firestore;
 
+  FirebaseRepository() {
+    initialize();
+  }
+
   @override
   Future<void> createCategory(String uid, Category category) async {
     try {

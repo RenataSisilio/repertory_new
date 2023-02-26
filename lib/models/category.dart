@@ -29,7 +29,7 @@ class Category {
   factory Category.fromMap(Map<String, dynamic> map) {
     return Category(
       name: map['name'] as String,
-      subcats: List<String>.from(map['subcats'] as List<String>),
+      subcats: (map['subcats'] as List).map((e) => e.toString()).toList(),
     );
   }
 
