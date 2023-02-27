@@ -20,8 +20,8 @@ class HomePage extends StatelessWidget {
             return const Center(child: Text('Erro'));
           }
           if (state is SuccessHomeState) {
-            return CustomScrollView(
-              slivers: [
+            return NestedScrollView(
+              headerSliverBuilder: (context, innerBoxIsScrolled) => [
                 SliverAppBar.medium(
                   title: const Text('Meu Repertório'),
                   actions: [
@@ -31,18 +31,16 @@ class HomePage extends StatelessWidget {
                     ),
                   ],
                 ),
-                SliverFillRemaining(
-                  child: PageView(
-                    controller: pageController,
-                    children: const [
-                      HomeView(),
-                      Center(child: Text('Favorites')),
-                      Center(child: Text('Lists')),
-                      Center(child: Text('Settings')),
-                    ],
-                  ),
-                ),
               ],
+              body: PageView(
+                controller: pageController,
+                children: const [
+                  HomeView(),
+                  Center(child: Text('Favorites')),
+                  Center(child: Text('Lists')),
+                  Center(child: Text('Settings')),
+                ],
+              ),
             );
           }
           return const Center(child: CircularProgressIndicator());
