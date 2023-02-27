@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 import '../models/category.dart';
@@ -7,11 +5,9 @@ import '../models/song.dart';
 import 'repository.dart';
 
 class FirebaseRepository implements Repository {
-  late final FirebaseFirestore? firestore;
+  final FirebaseFirestore? firestore;
 
-  FirebaseRepository() {
-    initialize();
-  }
+  FirebaseRepository(this.firestore);
 
   @override
   Future<void> createCategory(String uid, Category category) async {
@@ -23,9 +19,6 @@ class FirebaseRepository implements Repository {
           .doc(category.name)
           .set({'subcats': category.subcats});
     } catch (e) {
-      if (firestore == null) {
-        throw Exception("Firestore isn't initialized");
-      }
       rethrow;
     }
   }
@@ -35,9 +28,6 @@ class FirebaseRepository implements Repository {
     try {
       await firestore!.collection('users').doc(uid).set({});
     } catch (e) {
-      if (firestore == null) {
-        throw Exception("Firestore isn't initialized");
-      }
       rethrow;
     }
   }
@@ -53,9 +43,6 @@ class FirebaseRepository implements Repository {
           .collection('songs')
           .add(map);
     } catch (e) {
-      if (firestore == null) {
-        throw Exception("Firestore isn't initialized");
-      }
       rethrow;
     }
   }
@@ -89,9 +76,6 @@ class FirebaseRepository implements Repository {
             .delete();
       }
     } catch (e) {
-      if (firestore == null) {
-        throw Exception("Firestore isn't initialized");
-      }
       rethrow;
     }
   }
@@ -108,9 +92,6 @@ class FirebaseRepository implements Repository {
           .doc(song.id)
           .update(data);
     } catch (e) {
-      if (firestore == null) {
-        throw Exception("Firestore isn't initialized");
-      }
       rethrow;
     }
   }
@@ -131,9 +112,6 @@ class FirebaseRepository implements Repository {
       );
       await firestore!.collection('libs').doc(name).set(data);
     } catch (e) {
-      if (firestore == null) {
-        throw Exception("Firestore isn't initialized");
-      }
       rethrow;
     }
   }
@@ -155,9 +133,6 @@ class FirebaseRepository implements Repository {
       }
       return categories;
     } catch (e) {
-      if (firestore == null) {
-        throw Exception("Firestore isn't initialized");
-      }
       rethrow;
     }
   }
@@ -180,9 +155,6 @@ class FirebaseRepository implements Repository {
       }
       return songs;
     } catch (e) {
-      if (firestore == null) {
-        throw Exception("Firestore isn't initialized");
-      }
       rethrow;
     }
   }
@@ -216,23 +188,7 @@ class FirebaseRepository implements Repository {
         await createSong(uid, song);
       }
     } catch (e) {
-      if (firestore == null) {
-        throw Exception("Firestore isn't initialized");
-      }
       rethrow;
-    }
-  }
-
-  @override
-  void initialize() {
-    try {
-      firestore = FirebaseFirestore.instance;
-    } catch (e) {
-      if (firestore == null) {
-        rethrow;
-      } else {
-        log('Firestore already initialized');
-      }
     }
   }
 }

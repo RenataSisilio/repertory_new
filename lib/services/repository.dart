@@ -15,5 +15,4 @@ abstract class Repository {
   Future<List<Category>> getCategories(String uid);
   Future<List<Song>> getSongs(String uid);
   Future<void> importLib(String uid, String name);
-  void initialize();
 }
