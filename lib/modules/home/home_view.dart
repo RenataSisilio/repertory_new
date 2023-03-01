@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../services/get_it.dart';
 import 'home_controller.dart';
-import 'home_state.dart';
+import 'home_states.dart';
 
 class HomeView extends StatelessWidget {
   const HomeView({super.key});
@@ -21,7 +21,10 @@ class HomeView extends StatelessWidget {
                 children: [
                   ListTile(
                     title: const Text('Todas'),
-                    onTap: () {},
+                    onTap: () => Navigator.of(context).pushNamed(
+                      '/category',
+                      arguments: e.name,
+                    ),
                   ),
                 ],
               );
@@ -29,7 +32,10 @@ class HomeView extends StatelessWidget {
                 myExpansionTile.children.add(
                   ListTile(
                     title: Text(sub),
-                    onTap: () {},
+                    onTap: () => Navigator.of(context).pushNamed(
+                      '/category',
+                      arguments: sub,
+                    ),
                   ),
                 );
               }

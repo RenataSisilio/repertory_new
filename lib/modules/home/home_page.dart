@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../services/get_it.dart';
 import 'home_controller.dart';
-import 'home_state.dart';
+import 'home_states.dart';
 import 'home_view.dart';
 
 class HomePage extends StatelessWidget {
