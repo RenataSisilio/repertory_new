@@ -21,9 +21,30 @@ class HomePage extends StatelessWidget {
           }
           if (state is SuccessHomeState) {
             return NestedScrollView(
+              physics: const BouncingScrollPhysics(),
               headerSliverBuilder: (context, innerBoxIsScrolled) => [
-                SliverAppBar.medium(
-                  title: const Text('Meu Repertório'),
+                SliverAppBar.large(
+                  flexibleSpace: FlexibleSpaceBar(
+                    centerTitle: true,
+                    title: const Text('Meu Repertório'),
+                    background: DecoratedBox(
+                      position: DecorationPosition.foreground,
+                      decoration: const BoxDecoration(
+                        gradient: LinearGradient(
+                          begin: Alignment.bottomCenter,
+                          end: Alignment.topCenter,
+                          colors: [
+                            Color(0xFF00174A),
+                            Colors.transparent,
+                          ],
+                        ),
+                      ),
+                      child: Image.asset(
+                        'assets/logo_musica.jpg',
+                        fit: BoxFit.cover,
+                      ),
+                    ),
+                  ),
                   actions: [
                     IconButton(
                       onPressed: () {},
